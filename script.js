@@ -2,8 +2,8 @@
 // КОНФИГУРАЦИЯ
 // ============================================
 const CONFIG = {
-  TELEGRAM_BOT_TOKEN: "ТОКЕН_ТВОЕГО_БОТА",
-  TELEGRAM_CHAT_ID: "ТВОЙ_CHAT_ID",
+  TELEGRAM_BOT_TOKEN: "8873849566:AAGFJk_Y2haha__LMSOHBHonzwmc2xoSACw",
+  TELEGRAM_CHAT_ID: "6209207346",
   START_DATE: "2025-09-25T00:00:00", // ← дата вашей первой встречи (ГГГГ-ММ-ДД)
 };
 

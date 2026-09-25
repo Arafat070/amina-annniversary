@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Амина ❤️ 1 год вместе</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Caveat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Canvas: сердечки, лепестки, звёзды, салют -->
+    <canvas id="heartsCanvas"></canvas>
+    <canvas id="starsCanvas"></canvas>
+
+    <!-- Аудио -->
+    <audio id="bgMusic" loop>
+      <source src="music/kinolenta.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- Кнопка музыки -->
+    <button id="musicToggle" class="music-btn" aria-label="Включить музыку">
+      🔇
+    </button>
+
+    <!-- Главный экран -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Амина</h1>
+        <p class="hero-subtitle">1 год вместе</p>
+        <p class="hero-date">Наша история любви</p>
+      </div>
+      <div class="scroll-hint">↓</div>
+    </section>
+
+    <!-- Счётчик времени вместе -->
+    <section class="counter-section">
+      <h2 class="section-title">Мы вместе уже</h2>
+      <div class="counter-grid" id="counter">
+        <div class="counter-item">
+          <span class="counter-num" id="days">0</span
+          ><span class="counter-label">дней</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num" id="hours">0</span
+          ><span class="counter-label">часов</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num" id="minutes">0</span
+          ><span class="counter-label">минут</span>
+        </div>
+        <div class="counter-item">
+          <span class="counter-num" id="seconds">0</span
+          ><span class="counter-label">секунд</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Поздравительный текст -->
+    <section class="message-section">
+      <div class="message-container">
+        <div class="message-card">
+          <p class="typing-text" id="typingText"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Причины любви -->
+    <section class="reasons-section">
+      <h2 class="section-title">За что я тебя люблю</h2>
+      <div class="reasons-card">
+        <p class="reason-text" id="reasonText">
+          Нажми на кнопку, чтобы узнать ❤️
+        </p>
+        <button class="reason-btn" id="reasonBtn">Узнать причину</button>
+      </div>
+    </section>
+
+    <!-- Polaroid-галерея -->
+    <section class="gallery-section">
+      <h2 class="section-title">Наши моменты</h2>
+      <div class="gallery-grid" id="galleryGrid">
+        <div
+          class="polaroid"
+          data-caption="Первая встреча — с этого всё началось"
+        >
+          <img
+            src="images/first-meeting.jpg"
+            alt="Первая встреча"
+            loading="lazy"
+          />
+          <div class="polaroid-caption">Первая встреча</div>
+        </div>
+        <div class="polaroid" data-caption="Первая неделя — самые тёплые дни">
+          <img src="images/week.jpg" alt="Неделя вместе" loading="lazy" />
+          <div class="polaroid-caption">Неделя</div>
+        </div>
+        <div class="polaroid" data-caption="Месяц вместе — уже родные">
+          <img src="images/month.jpg" alt="Месяц вместе" loading="lazy" />
+          <div class="polaroid-caption">Месяц</div>
+        </div>
+        <div class="polaroid" data-caption="Полгода — уже не могу без тебя">
+          <img src="images/half-year.jpg" alt="Полгода вместе" loading="lazy" />
+          <div class="polaroid-caption">Полгода</div>
+        </div>
+        <div class="polaroid" data-caption="Год вместе — только начало">
+          <img src="images/year.jpg" alt="Год вместе" loading="lazy" />
+          <div class="polaroid-caption">Год</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Видео -->
+    <section class="video-section">
+      <h2 class="section-title">Наше видео</h2>
+      <div class="video-wrapper">
+        <video controls poster="images/year.jpg" preload="metadata">
+          <source src="video/anniversary.mp4" type="video/mp4" />
+          Ваш браузер не поддерживает видео.
+        </video>
+      </div>
+    </section>
+
+    <!-- Скрытые послания -->
+    <section class="secret-section">
+      <h2 class="section-title">Тайные послания</h2>
+      <p class="secret-hint">
+        Лови сердечки на фоне — в них спрятаны слова для тебя 💌
+      </p>
+      <div class="secret-random-btn">
+        <button id="secretBtn">Открыть случайное послание</button>
+      </div>
+      <div class="secret-modal" id="secretModal">
+        <div class="secret-content">
+          <span class="secret-close" id="secretClose">×</span>
+          <p id="secretText"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Плейлист -->
+    <section class="playlist-section">
+      <h2 class="section-title">Наш плейлист</h2>
+      <div class="playlist">
+        <button
+          class="playlist-item"
+          data-src="music/kinolenta.mp3"
+          data-name="Баста — Кинолента"
+        >
+          <span class="playlist-icon">▶</span>
+          <span class="playlist-name">Баста — Кинолента</span>
+          <span class="playlist-desc">Наша главная песня</span>
+        </button>
+        <button
+          class="playlist-item"
+          data-src="music/uluk.mp3"
+          data-name="Вторая песня"
+        >
+          <span class="playlist-icon">▶</span>
+          <span class="playlist-name">Ulukmanapo - Летали</span>
+          <span class="playlist-desc">Песня с первой встречи</span>
+        </button>
+        <button
+          class="playlist-item"
+          data-src="music/navai.mp3"
+          data-name="Третья песня"
+        >
+          <span class="playlist-icon">▶</span>
+          <span class="playlist-name">Navai, MONA - Есенин</span>
+          <span class="playlist-desc">Танцевали под неё</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Форма ответа -->
+    <section class="reply-section">
+      <h2 class="section-title">Твой ответ</h2>
+      <div class="reply-card">
+        <p class="reply-hint">Напиши мне что-нибудь ❤️</p>
+        <form id="replyForm">
+          <textarea
+            id="replyMessage"
+            placeholder="Твоё сообщение..."
+            required
+            rows="4"
+          ></textarea>
+          <button type="submit" id="submitBtn">Отправить</button>
+        </form>
+        <div id="formStatus" class="form-status"></div>
+      </div>
+    </section>
+
+    <!-- Финальный вопрос -->
+    <section class="final-section">
+      <h2 class="final-question">Ты будешь со мной ещё много-много лет?</h2>
+      <div class="final-buttons">
+        <button class="btn-yes" id="btnYes">Да 💖</button>
+        <button class="btn-yes-2" id="btnYes2">Да, конечно! 💍</button>
+        <button class="btn-no" id="btnNo">Нет 😢</button>
+      </div>
+      <div class="final-answer" id="finalAnswer"></div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="footer">
+      <p>Сделано с ❤️ для Амины</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
